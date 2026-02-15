@@ -18,6 +18,13 @@ pipeline {
                 sh "ls -ls /home/ec2-user/dev/"
             }
         }
+        stage('Print Workspace'){
+            steps{
+                echo "workspace path is : ${env.WORKSPACE}"
+                sh "pwd"
+                sh "ls -l"
+            }
+        }
     }
     post{
             success{
