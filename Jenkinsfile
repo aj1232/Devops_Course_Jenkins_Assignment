@@ -10,7 +10,7 @@ pipeline {
     stages {
         stage('Checkout Develop Branch') {
             steps {
-               sh "Taking code checkout"
+               echo "Taking code checkout"
             }
         }
         stage('Verify Files'){
