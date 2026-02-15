@@ -18,7 +18,8 @@ pipeline {
                 sh "ls -ls /home/ec2-user/dev/"
             }
         }
-        post{
+    }
+    post{
             success{
                 echo "Build succeeded !!"
                 sh "echo 'Returning SUCCESS Status'"
@@ -31,5 +32,4 @@ pipeline {
                 echo "This always runs, regardless of success/failure"
             }
         }
-    }
 }
