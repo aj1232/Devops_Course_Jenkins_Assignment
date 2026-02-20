@@ -1,0 +1,35 @@
+pipeline {
+    agent {
+        label 'Test_Server'
+    }
+
+    triggers{
+        githubPush()
+    }
+    
+    stages {
+        stage('Checkout Test Branch') {
+            steps {
+               echo "Taking code checkout"
+            }
+        }
+        stage('Verify Files'){
+            steps{
+                sh "ls -ls /home/ec2-user/test/"
+            }
+        }
+    }
+    post{
+            success{
+                echo "Build succeeded !!"
+                sh "echo 'Returning SUCCESS Status'"
+            }
+            failure{
+                echo "Build Failed"
+                sh "echo 'Returning FAILURE status'"
+            }
+            always{
+                echo "This always runs, regardless of success/failure"
+            }
+        }
+}
